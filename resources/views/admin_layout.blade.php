@@ -430,3 +430,7 @@
 </body>
 
 </html>
+
+
+
+php artisan make:migration create_tbl_admin_table --create=tbl_admin

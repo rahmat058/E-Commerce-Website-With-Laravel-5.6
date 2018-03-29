@@ -26,3 +26,4 @@ Route::post('/admin-dashboard', 'AdminController@dashboard');
 
 // Category related route is Here
 Route::get('/add-category', 'CategoryController@index');
+Route::get('/all-category', 'CategoryController@all_category');

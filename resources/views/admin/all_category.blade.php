@@ -8,13 +8,24 @@
     <a href="index.html">Home</a>
     <i class="icon-angle-right"></i>
   </li>
-  <li><a href="#">Tables</a></li>
+  <li><a href="#">All Category</a></li>
 </ul>
+
+<p class="alert-success">
+    <?php
+        $message = Session::get('message');
+        if($message)
+        {
+          echo $message;
+          Session::put('message', NULL);
+        }
+    ?>
+</p>
 
 <div class="row-fluid sortable">
   <div class="box span12">
     <div class="box-header" data-original-title>
-      <h2><i class="halflings-icon user"></i><span class="break"></span>Members</h2>
+      <h2><i class="halflings-icon user"></i><span class="break"></span>All Category</h2>
     </div>
     <div class="box-content">
       <table class="table table-striped table-bordered bootstrap-datatable datatable">
@@ -38,16 +49,16 @@
             @if($allCategory->publication_status ==1)
             <span class="label label-success">Active</span>
             @else
-            <span class="label label-danger">Inactive</span>
+            <span class="label label-danger">Unactive</span>
             @endif
           </td>
           <td class="center">
             @if($allCategory->publication_status ==1)
-            <a class="btn btn-danger" href="#">
+            <a class="btn btn-danger"         href="{{URL::to('/unactive-category/'.$allCategory->category_id)}}">
               <i class="halflings-icon white thumbs-down"></i>
             </a>
             @elseif($allCategory->publication_status ==0)
-            <a class="btn btn-success" href="#">
+            <a class="btn btn-success" href="{{URL::to('/active-category/'.$allCategory->category_id)}}">
               <i class="halflings-icon white thumbs-up"></i>
             </a>
             @endif

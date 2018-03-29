@@ -25,7 +25,7 @@ class CategoryController extends Controller
                            -> with('all_category_info', $all_category_info);
 
       return view('admin_layout')
-              -> with('admin.all_category', $manage_category);                     
+              -> with('admin.all_category', $manage_category);
     }
 
     public function save_category(Request $request)
@@ -39,5 +39,25 @@ class CategoryController extends Controller
       DB::table('tbl_category')->insert($data);
       Session::put('message', 'Category Added Successfully !!');
       return Redirect::to('/add-category');
+    }
+
+    public function unactive_category($category_id)
+    {
+      DB::table('tbl_category')
+             -> where('category_id', $category_id)
+             -> update(['publication_status' => 0]);
+
+      Session::put('message', 'Category Unactive Successfully !!');
+      return Redirect::to('/all-category');
+    }
+
+    public function active_category($category_id)
+    {
+      DB::table('tbl_category')
+             -> where('category_id', $category_id)
+             -> update(['publication_status' => 1]);
+
+      Session::put('message', 'Category Active Successfully !!');
+      return Redirect::to('/all-category');
     }
 }

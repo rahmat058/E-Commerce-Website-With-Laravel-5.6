@@ -330,7 +330,7 @@
               <a href="messages.html"><i class="icon-envelope"></i><span class="hidden-tablet"> All Category</span></a>
             </li>
 						<li>
-              <a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> Add Category</span></a>
+              <a href="{{URL::to('/add-category')}}"><i class="icon-tasks"></i><span class="hidden-tablet"> Add Category</span></a>
             </li>
 						<li>
               <a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> All Brands</span></a>

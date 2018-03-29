@@ -21,3 +21,8 @@ Route::get('/logout', 'SuperAdminController@logout');
 Route::get('/admin', 'AdminController@index');
 Route::get('/dashboard', 'AdminController@show_dashboard');
 Route::post('/admin-dashboard', 'AdminController@dashboard');
+
+
+
+// Category related route is Here
+Route::get('/add-category', 'CategoryController@index');

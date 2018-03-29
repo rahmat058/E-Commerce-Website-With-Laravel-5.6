@@ -44,3 +44,8 @@ Route::get('/unactive-manufacture/{manufacture_id}', 'ManufactureController@unac
 Route::get('/active-manufacture/{manufacture_id}', 'ManufactureController@active_manufacture');
 Route::get('/edit-manufacture/{manufacture_id}', 'ManufactureController@edit_manufacture');
 Route::post('/update-manufacture/{manufacture_id}', 'ManufactureController@update_manufacture');
+
+
+
+// Product route are Here
+Route::get('/add-product', 'ProductController@index');

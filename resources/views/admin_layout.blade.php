@@ -439,6 +439,24 @@
 		<script src="{{asset('backend/js/custom.js')}}"></script>
 	<!-- end: JavaScript-->
 
+  <!-- Bootbox Plugin Start Here -->
+  <script  type="text/javascript" src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js
+')}}"></script>
+<!-- Bootbox Plugin End Here -->
+
+<!-- BootBox Modal Code Start -->
+<script type="text/javascript">
+       $(document).on("click", "#delete", function(e) {
+         e.preventDefault();
+         var link = $(this).attr("href");
+         bootbox.confirm("Are you want to delete!!", function(confirmed) {
+           if (confirmed) {
+             window.location.href = link;
+           };
+         });
+       });
+</script>
+
 </body>
 
 </html>

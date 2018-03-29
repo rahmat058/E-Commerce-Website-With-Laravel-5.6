@@ -33,3 +33,10 @@ Route::get('/active-category/{category_id}', 'CategoryController@active_category
 Route::get('/edit-category/{category_id}', 'CategoryController@edit_category');
 Route::post('/update-category/{category_id}', 'CategoryController@update_category');
 Route::get('/delete-category/{category_id}', 'CategoryController@delete_category');
+
+
+// Manufacture or  brands routes are here
+Route::get('/add-manufacture', 'ManufactureController@index');
+Route::get('/all-manufacture', 'ManufactureController@all_manufacture');
+Route::post('/save-manufacture', 'ManufactureController@save_manufacture');
+Route::get('/delete-manufacture/{manufacture_id}', 'ManufactureController@delete_manufacture');

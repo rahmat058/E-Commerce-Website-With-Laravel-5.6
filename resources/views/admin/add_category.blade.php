@@ -52,7 +52,7 @@
         <div class="control-group">
           <label class="control-label" for="date01">Publication Status</label>
           <div class="controls">
-          <input type="checkbox" name="publication_status" value="1" required="">
+          <input type="checkbox" name="publication_status" value="1">
           </div>
         </div>
         <div class="form-actions">

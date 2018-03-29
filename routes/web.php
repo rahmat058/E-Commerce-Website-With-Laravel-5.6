@@ -50,3 +50,4 @@ Route::post('/update-manufacture/{manufacture_id}', 'ManufactureController@updat
 // Product route are Here
 Route::get('/add-product', 'ProductController@index');
 Route::post('/save-product', 'ProductController@save_product');
+Route::get('/all-product', 'ProductController@all_product');

@@ -58,4 +58,19 @@ class ProductController extends Controller
           Session::put('message', 'Product Added Successfuly Without Image !!');
           return Redirect::to('/add-product');
     }
+
+
+    public function all_product()
+    {
+      $all_product_info = DB::table('tbl_products')
+      -> join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
+      -> join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
+      -> get();
+
+      $manage_product =  view('admin.all_product')
+                           -> with('all_product_info', $all_product_info);
+
+      return view('admin_layout')
+              -> with('admin.all_product', $manage_product);
+    }
 }

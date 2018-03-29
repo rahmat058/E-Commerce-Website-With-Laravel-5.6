@@ -60,4 +60,33 @@ class CategoryController extends Controller
       Session::put('message', 'Category Active Successfully !!');
       return Redirect::to('/all-category');
     }
+
+    public function edit_category($category_id)
+    {
+     $edit_category_info = DB::table('tbl_category')
+                             -> where('category_id', $category_id)
+                             -> first();
+
+     $manage_edit_category =  view('admin.edit_category')
+                          -> with('edit_category_info', $edit_category_info);
+
+     return view('admin_layout')
+             -> with('admin.edit_category', $manage_edit_category);
+
+
+    }
+
+    public function update_category(Request $request, $category_id)
+    {
+      $data = array();
+      $data['category_name']        = $request->category_name;
+      $data['category_description'] = $request->category_description;
+
+      DB::table('tbl_category')
+           -> where('category_id', $category_id)
+           -> update($data);
+
+      Session::put('message', 'Category Updated Successfully !!');
+      return Redirect::to('/all-category');     
+    }
 }

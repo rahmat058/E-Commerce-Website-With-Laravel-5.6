@@ -14,11 +14,15 @@ class ProductController extends Controller
 {
     public function index()
     {
+      $this->AdminAuthCheck();
+
       return view('admin.add_product');
     }
 
     public function save_product(Request $request)
     {
+      $this->AdminAuthCheck();
+
       $data = array();
       $data['product_name']              = $request->product_name;
       $data['category_id']               = $request->category_id;
@@ -62,6 +66,8 @@ class ProductController extends Controller
 
     public function all_product()
     {
+      $this->AdminAuthCheck();
+
       $all_product_info = DB::table('tbl_products')
       -> join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
       -> join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
@@ -107,6 +113,8 @@ class ProductController extends Controller
 
     public function edit_product($product_id)
     {
+      $this->AdminAuthCheck();
+
      $edit_product_info = DB::table('tbl_products')
                              -> where('product_id', $product_id)
                              -> first();
@@ -122,6 +130,8 @@ class ProductController extends Controller
 
     public function update_product(Request $request, $product_id)
     {
+      $this->AdminAuthCheck();
+      
       $data = array();
       $data['product_name']              = $request->product_name;
       $data['product_short_description'] = $request->product_short_description;
@@ -137,5 +147,20 @@ class ProductController extends Controller
       Session::put('message', 'Product Updated Successfully !!');
       return Redirect::to('/all-product');
 
+    }
+
+
+    public function AdminAuthCheck()
+    {
+      $admin_id = Session::get('admin_id');
+
+      if ($admin_id)
+      {
+         return;
+      }
+      else
+      {
+        return Redirect::to('/admin')->send();
+      }
     }
 }

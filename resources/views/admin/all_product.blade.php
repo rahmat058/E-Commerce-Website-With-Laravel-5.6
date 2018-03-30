@@ -52,7 +52,7 @@
           <td class="center">
             <img src="{{URL::to($allProduct->product_image)}}" style="height:80px; width:80px;">
           </td>
-          <td class="center">{{$allProduct->product_price}}</td>
+          <td class="center">{{$allProduct->product_price}} Tk</td>
           <td class="center">{{$allProduct->category_name}}</td>
           <td class="center">{{$allProduct->manufacture_name}}</td>
           <td class="center">

@@ -104,4 +104,38 @@ class ProductController extends Controller
       Session::put('message', 'Products Deleted Successfully !!');
       return Redirect::to('/all-product');
     }
+
+    public function edit_product($product_id)
+    {
+     $edit_product_info = DB::table('tbl_products')
+                             -> where('product_id', $product_id)
+                             -> first();
+
+     $manage_edit_product =  view('admin.edit_product')
+                          -> with('edit_product_info', $edit_product_info);
+
+     return view('admin_layout')
+             -> with('admin.edit_product', $manage_edit_product);
+
+
+    }
+
+    public function update_product(Request $request, $product_id)
+    {
+      $data = array();
+      $data['product_name']              = $request->product_name;
+      $data['product_short_description'] = $request->product_short_description;
+      $data['product_long_description']  = $request->product_long_description;
+      $data['product_price']             = $request->product_price;
+      $data['product_size']              = $request->product_size;
+      $data['product_color']             = $request->product_color;
+
+      DB::table('tbl_products')
+           -> where('product_id', $product_id)
+           -> update($data);
+
+      Session::put('message', 'Product Updated Successfully !!');
+      return Redirect::to('/all-product');
+
+    }
 }

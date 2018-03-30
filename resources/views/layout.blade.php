@@ -223,7 +223,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h4 class="panel-title"><a href="#">{{$allCategory->category_name}}</a></h4>
+						<h4 class="panel-title"><a href="{{URL::to('/product_by_category/'.$allCategory->category_id)}}">{{$allCategory->category_name}}</a></h4>
 					</div>
 				</div>
 
@@ -241,7 +241,7 @@
                                                    -> get();
                   foreach($all_publish_manufacture as $allManufacture) { ?>
 
-									<li><a href="#"> <span class="pull-right">(50)</span>{{$allManufacture-> manufacture_name}}</a></li>
+									<li><a href="{{URL::to('/product_by_manufacture/'.$allManufacture->manufacture_id)}}"> <span class="pull-right">(50)</span>{{$allManufacture-> manufacture_name}}</a></li>
 
                   <?php } ?>
 								</ul>

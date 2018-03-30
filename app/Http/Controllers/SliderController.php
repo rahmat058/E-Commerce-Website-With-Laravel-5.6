@@ -69,6 +69,37 @@ class SliderController extends Controller
             -> with('admin.all_slider', $manage_slider);
   }
 
+  public function unactive_slider($slider_id)
+  {
+    DB::table('tbl_slider')
+           -> where('slider_id', $slider_id)
+           -> update(['publication_status' => 0]);
+
+    Session::put('message', 'Slider Unactive Successfully !!');
+    return Redirect::to('/all-slider');
+  }
+
+  public function active_slider($slider_id)
+  {
+    DB::table('tbl_slider')
+           -> where('slider_id', $slider_id)
+           -> update(['publication_status' => 1]);
+
+    Session::put('message', 'Slider Active Successfully !!');
+    return Redirect::to('/all-slider');
+  }
+
+
+  public function delete_slider($slider_id)
+  {
+     DB::table('tbl_slider')
+          -> where('slider_id', $slider_id)
+          -> delete();
+
+    Session::put('message', 'Slider Deleted Successfully !!');
+    return Redirect::to('/all-slider');
+  }
+
   public function AdminAuthCheck()
   {
     $admin_id = Session::get('admin_id');

@@ -13,6 +13,10 @@
 
       <?php
          $contents = Cart::content();
+
+         // echo "<pre>";
+         // print_r($contents);
+         // exit();
       ?>
 
       <table class="table table-condensed">
@@ -51,7 +55,9 @@
                 <p class="cart_total_price">{{$allContent->total}} Tk</p>
               </td>
               <td class="cart_delete">
-                <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                <a class="cart_quantity_delete" href="{{URL::to('/delete-to-cart/'.$allContent->rowId)}}">
+                  <i class="fa fa-times"></i>
+                </a>
               </td>
             </tr>
           @endforeach

@@ -20,7 +20,7 @@ Route::post('/update-cart', 'CartController@update_cart');
 Route::get('/login-check', 'CheckoutController@login_check');
 Route::post('/customer_registration', 'CheckoutController@customer_registration');
 Route::get('/checkout', 'CheckoutController@checkout');
-
+Route::post('/save-shipping-details', 'CheckoutController@save_shipping_details');
 
 
 

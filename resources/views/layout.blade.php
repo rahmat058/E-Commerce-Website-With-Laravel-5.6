@@ -103,9 +103,9 @@
                     $customer_id = Session::get('customer_id');
                  ?>
                  @if($customer_id != NULL)
-								    <li><a href="login.html"><i class="fa fa-lock"></i> Logout</a></li>
+								    <li><a href=""><i class="fa fa-lock"></i> Logout</a></li>
                  @else
-                    <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                    <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-lock"></i> Login</a></li>
                  @endif
 
 							</ul>

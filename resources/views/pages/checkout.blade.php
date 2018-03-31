@@ -13,9 +13,10 @@
       <div class="row">
         <div class="col-sm-9 clearfix">
           <div class="bill-to">
-            <p>Bill To</p>
+            <p>Shipping Details</p>
             <div class="form-one">
-              <form>
+              <form action="{{URL::to('/save-shipping-details')}}" method="post">
+                {{ csrf_field() }}
                 <input type="text" name="shipping_email"         placeholder="Email*">
                 <input type="text" name="shipping_first_name"    placeholder="First Name *">
                 <input type="text" name="shipping_last_name"     placeholder="Last Name *">

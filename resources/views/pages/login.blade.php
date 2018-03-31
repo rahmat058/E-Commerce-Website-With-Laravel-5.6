@@ -26,7 +26,8 @@
       <div class="col-sm-4">
         <div class="signup-form"><!--sign up form-->
           <h2>New User Signup!</h2>
-          <form action="#">
+          <form action="{{URL::to('/customer_registration')}}" method="post">
+            {{ csrf_field() }}
             <input type="text" placeholder="Name" name="customer_name" required=''/>
             <input type="email" placeholder="Email Address" name="customer_email" required=''/>
             <input type="password" placeholder="Password" name="password" required=''/>

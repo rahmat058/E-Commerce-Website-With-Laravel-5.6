@@ -154,43 +154,35 @@
 						</ol>
 
 						<div class="carousel-inner">
+
+              <?php
+                  $all_published_slider = DB::table('tbl_slider')
+                                             -> where('publication_status', 1)
+                                             -> get();
+                      $i = 1;
+                   foreach ($all_published_slider as  $allSlider) {
+
+                     if($i == 1) {
+              ?>
+
 							<div class="item active">
+
+              <?php } else { ?>
+                 <div class="item">
+              <?php }  ?>
+
 								<div class="col-sm-6">
 									<h1><span>E</span>-SHOPPER</h1>
-									<h2>Free E-Commerce Template</h2>
+									<h2>Ladies Shopping Bag</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{URL::to('frontend/images/home/girl1.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{URL::to('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{URL::to('frontend/images/home/girl2.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{URL::to('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
+                  <img src="{{URL::to($allSlider->slider_image)}}" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>Free Ecommerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{URL::to('frontend/images/home/girl3.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{URL::to('frontend/images/home/pricing.png')}}" class="pricing" alt="" />
-								</div>
-							</div>
+            <?php $i++; }  ?>
 
 						</div>
 

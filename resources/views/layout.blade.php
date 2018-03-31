@@ -87,9 +87,27 @@
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+
+                <?php
+                    $customer_id = Session::get('customer_id');
+                 ?>
+               @if($customer_id != NULL)
+               <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+               @else
+                <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+               @endif
+
 								<li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+
+                <?php
+                    $customer_id = Session::get('customer_id');
+                 ?>
+                 @if($customer_id != NULL)
+								    <li><a href="login.html"><i class="fa fa-lock"></i> Logout</a></li>
+                 @else
+                    <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                 @endif
+
 							</ul>
 						</div>
 					</div>
@@ -118,7 +136,6 @@
 										<li><a href="product-details.html">Product Details</a></li>
 										<li><a href="{{URL::to('/login-check')}}">Checkout</a></li>
 										<li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
-										<li><a href="login.html">Login</a></li>
                                     </ul>
                                 </li>
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>

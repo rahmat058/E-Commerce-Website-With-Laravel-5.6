@@ -103,7 +103,7 @@
                     $customer_id = Session::get('customer_id');
                  ?>
                  @if($customer_id != NULL)
-								    <li><a href=""><i class="fa fa-lock"></i> Logout</a></li>
+								    <li><a href="{{URL::to('/customer_logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
                  @else
                     <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-lock"></i> Login</a></li>
                  @endif
@@ -134,7 +134,6 @@
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
 										<li><a href="product-details.html">Product Details</a></li>
-										<li><a href="{{URL::to('/login-check')}}">Checkout</a></li>
 										<li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
                                     </ul>
                                 </li>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
+use Cart;
 
 class CartController extends Controller
 {
@@ -11,11 +13,35 @@ class CartController extends Controller
     {
       $qty        = $request->qty;
       $product_id = $request->product_id;
-      
+
       $product_info = DB::table('tbl_products')
                          -> where('product_id', $product_id)
                          -> first();
-      echo "<pre>";
-      print_r($product_info);
+
+
+      $data['qty']               = $qty;
+      $data['id']                = $product_info->product_id;
+      $data['name']              = $product_info->product_name;
+      $data['price']             = $product_info->product_price;
+      $data['id']                = $product_info->product_id;
+      $data['options']['image']  = $product_info->product_image;
+
+
+      Cart::add($data);
+      return Redirect::to('/show-cart');
+    }
+
+
+    public function show_cart()
+    {
+      $all_published_category = DB::table('tbl_category')
+                                  -> where('publication_status', 1)
+                                  -> get();
+
+      $manage_published_category =  view('pages.add_to_cart')
+                           -> with('all_published_category', $all_published_category);
+
+      return view('layout')
+              -> with('pages.add_to_cart', $manage_published_category);
     }
 }

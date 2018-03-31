@@ -11,6 +11,7 @@ Route::get('/view_product/{product_id}', 'HomeController@product_details_by_id')
 
 // Add cart route here
 Route::post('/add-to-cart', 'CartController@add_to_cart');
+Route::get('/show-cart', 'CartController@show_cart');
 
 
 

@@ -9,11 +9,23 @@ Route::get('/product_by_manufacture/{manufacture_id}', 'HomeController@show_prod
 Route::get('/view_product/{product_id}', 'HomeController@product_details_by_id');
 
 
-// Add cart route here
+//  Cart route here
 Route::post('/add-to-cart', 'CartController@add_to_cart');
 Route::get('/show-cart', 'CartController@show_cart');
 Route::get('/delete-to-cart/{rowId}', 'CartController@delete_to_cart');
 Route::post('/update-cart', 'CartController@update_cart');
+
+
+// Checkout route are Here
+Route::get('/login-check', 'CheckoutController@login_check');
+
+
+
+
+
+
+
+
 
 
 

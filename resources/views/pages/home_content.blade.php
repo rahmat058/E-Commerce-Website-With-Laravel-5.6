@@ -18,7 +18,9 @@
         <div class="product-overlay">
           <div class="overlay-content">
             <h2>{{$allPublishedProduct->product_price}} Tk</h2>
-            <p>{{$allPublishedProduct->product_name}}</p>
+            <a href="{{URL::to('/view_product/'.$allPublishedProduct->product_id)}}">
+              <p>{{$allPublishedProduct->product_name}}</p>
+            </a>
             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
           </div>
         </div>
@@ -26,7 +28,9 @@
     <div class="choose">
       <ul class="nav nav-pills nav-justified">
         <li><a href="#"><i class="fa fa-plus-square"></i>{{$allPublishedProduct->manufacture_name}}</a></li>
-        <li><a href="#"><i class="fa fa-plus-square"></i>View Product</a></li>
+        <li><a href="{{URL::to('/view_product/'.$allPublishedProduct->product_id)}}">
+          <i class="fa fa-plus-square"></i>View Product</a>
+        </li>
       </ul>
     </div>
   </div>

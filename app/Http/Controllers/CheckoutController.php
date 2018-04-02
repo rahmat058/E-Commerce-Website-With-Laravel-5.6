@@ -78,6 +78,11 @@ class CheckoutController extends Controller
       return view('pages.payment');
     }
 
+    public function order_place(Request $request)
+    {
+      $payment_gateway = $request->payment_gateway;
+    }
+
 
 
     public function customer_login(Request $request)

@@ -160,14 +160,17 @@
 
                 <?php
                     $customer_id = Session::get('customer_id');
+                    $shipping_id = Session::get('shipping_id');
                  ?>
-               @if($customer_id != NULL)
-               <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-               @else if
-                <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-               @else
-                <li><a href="{{URL::to('/payment')}}">Payment</a></li>
-               @endif
+               
+
+               <?php if($customer_id ==NULL && $shipping_id==NULL){?>
+                            <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                        <?php }if($customer_id !=NULL && $shipping_id==NULL){?>
+                              <li><a href="{{URL::to('/checkout')}}">Checkout</a></li>
+                        <?php }if($customer_id !=NULL && $shipping_id!=NULL){?>
+                               <li><a href="{{URL::to('/payment')}}">Checkout</a></li>
+                        <?php }else{}?>
 
 								<li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 

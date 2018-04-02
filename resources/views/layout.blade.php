@@ -21,6 +21,76 @@
     <link rel="apple-touch-icon-precomposed" href="{{URL::to('frontend/images/ico/apple-touch-icon-57-precomposed.png')}}">
 </head><!--/head-->
 
+<style type="text/css">
+     <style type="text/css">
+        .paymentWrap {
+    padding: 50px;
+}
+
+.paymentWrap .paymentBtnGroup {
+    max-width: 800px;
+    margin: auto;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod {
+    padding: 40px;
+    box-shadow: none;
+    position: relative;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active {
+    outline: none !important;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active .method {
+    border-color: #4cd264;
+    outline: none !important;
+    box-shadow: 0px 3px 22px 0px #7b7b7b;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid transparent;
+    transition: all 0.5s;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.visa {
+    background-image: url("http://citinewslive.com/wp-content/uploads/2017/01/cash-handed-over.jpg");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.master-card {
+    background-image: url("https://www.paypalobjects.com/webstatic/mktg/logo-center/PP_Acceptance_Marks_for_LogoCenter_266x142.png");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.amex {
+    background-image: url("http://www.theindependentbd.com/assets/news_images/bkash.jpg");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.vishwa {
+    background-image: url("https://cdn0.iconfinder.com/data/icons/50-payment-system-icons-2/480/Payza.png");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.ez-cash {
+    background-image: url("http://www.busbooking.lk/img/carousel/BusBooking.lk_ezCash_offer.png");
+}
+
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method:hover {
+    border-color: #4cd264;
+    outline: none !important;
+}
+    </style>
+</style>
+
+
+
 <body>
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
@@ -93,8 +163,10 @@
                  ?>
                @if($customer_id != NULL)
                <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-               @else
+               @else if
                 <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+               @else
+                <li><a href="{{URL::to('/payment')}}">Payment</a></li>
                @endif
 
 								<li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>

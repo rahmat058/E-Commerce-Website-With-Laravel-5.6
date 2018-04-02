@@ -65,16 +65,6 @@ class CheckoutController extends Controller
 
     public function payment()
     {
-      // $all_published_category = DB::table('tbl_category')
-      //                             -> where('publication_status', 1)
-      //                             -> get();
-      //
-      // $manage_published_category =  view('pages.payment')
-      //                      -> with('all_published_category', $all_published_category);
-      //
-      // return view('layout')
-      //         -> with('pages.payment', $manage_published_category);
-
       return view('pages.payment');
     }
 

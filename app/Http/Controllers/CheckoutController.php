@@ -111,23 +111,28 @@ class CheckoutController extends Controller
 
       if($payment_gateway === 'handcash')
       {
-           echo "Successfully done by handcash";
+           Cart::destroy();
+           return view('pages.handcash');
       }
       elseif($payment_gateway === 'paypal')
       {
-          echo "Successfully done by paypal";
+          Cart::destroy();
+          return view('pages.paypal');
       }
       elseif($payment_gateway === 'bkash')
       {
-        echo "Successfully done by bkash";
+          Cart::destroy();
+          return view('pages.bkash');
       }
       elseif($payment_gateway === 'payza')
       {
-        echo "Successfully done by payza";
+          Cart::destroy();
+          return view('pages.payza');
       }
       else
       {
-        echo "Successfully done by ezcash";
+          Cart::destroy();
+          return view('pages.ezcash');
       }
 
     }

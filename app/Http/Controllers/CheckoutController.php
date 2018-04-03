@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
+use Cart;
 use Session;
 use DB;
 
@@ -70,7 +71,65 @@ class CheckoutController extends Controller
 
     public function order_place(Request $request)
     {
-      $payment_gateway = $request->payment_gateway;
+      $payment_gateway = $request->payment_method;
+
+      $payment_data = array();
+      $payment_data['payment_method'] = $payment_gateway;
+      $payment_data['payment_status']  = 'pending';
+
+      $payment_id  = DB::table('tbl_payment')
+                        -> insertGetId($payment_data);
+
+
+      $order_data = array();
+      $order_data['customer_id']   = Session::get('customer_id');
+      $order_data['shipping_id']   = Session::get('shipping_id');
+      $order_data['payment_id']    = $payment_id;
+      $order_data['order_total']   = Cart::total();
+      $order_data['order_status']  = 'pending';
+
+      $order_id = DB::table('tbl_order')
+                       -> insertGetId($order_data);
+
+      $contents = Cart::content();
+
+      $order_details_data = array();
+
+      foreach ($contents as  $allContent)
+      {
+           $order_details_data['order_id']               = $order_id;
+           $order_details_data['product_id']             = $allContent->id;
+           $order_details_data['product_name']           = $allContent->name;
+           $order_details_data['product_price']          = $allContent->price;
+           $order_details_data['product_sales_quantity'] = $allContent->qty;
+
+
+           DB::table('tbl_order_details')
+               -> insert($order_details_data);
+      }
+
+
+      if($payment_gateway === 'handcash')
+      {
+           echo "Successfully done by handcash";
+      }
+      elseif($payment_gateway === 'paypal')
+      {
+          echo "Successfully done by paypal";
+      }
+      elseif($payment_gateway === 'bkash')
+      {
+        echo "Successfully done by bkash";
+      }
+      elseif($payment_gateway === 'payza')
+      {
+        echo "Successfully done by payza";
+      }
+      else
+      {
+        echo "Successfully done by ezcash";
+      }
+
     }
 
 

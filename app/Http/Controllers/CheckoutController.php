@@ -162,4 +162,20 @@ class CheckoutController extends Controller
       Session::flush();
       return Redirect::to('/');
     }
+
+
+
+    public function manage_order()
+    {
+      $all_order_info = DB::table('tbl_order')
+      -> join('tbl_customer','tbl_order.customer_id','=','tbl_customer.customer_id')
+      -> select('tbl_order.*', 'tbl_customer.customer_name')
+      -> get();
+
+      $manage_order =  view('admin.manage_order')
+                           -> with('all_order_info', $all_order_info);
+
+      return view('admin_layout')
+              -> with('admin.manage_order', $manage_order);
+    }
 }

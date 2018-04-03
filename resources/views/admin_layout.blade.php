@@ -353,7 +353,7 @@
 							</ul>
 						</li>
 						<li>
-              <a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Social Link</span></a>
+              <a href="{{URL::to('/manage-order')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> Manage Order</span></a>
             </li>
 						<li>
               <a href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Shop Name</span></a>

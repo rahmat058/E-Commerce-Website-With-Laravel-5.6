@@ -46,7 +46,7 @@
               <i class="halflings-icon white thumbs-up"></i>
             </a>
             @endif
-            <a class="btn btn-info" href="{{URL::to('/edit-order/'.$allOrder->order_id)}}">
+            <a class="btn btn-info" href="{{URL::to('/view-order/'.$allOrder->order_id)}}">
               <i class="halflings-icon white edit"></i>
             </a>
             <a class="btn btn-danger" id="delete" href="{{URL::to('/delete-order/'.$allOrder->order_id)}}">

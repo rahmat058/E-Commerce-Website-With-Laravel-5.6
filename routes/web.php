@@ -36,6 +36,7 @@ Route::post('/order-place', 'CheckoutController@order_place');
 
 // Manage order routes
 Route::get('/manage-order', 'CheckoutController@manage_order');
+Route::get('/view-order/{order_id}', 'CheckoutController@view_order');
 
 
 
